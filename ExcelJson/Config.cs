@@ -126,7 +126,7 @@ namespace ExcelProtobuf
 
             using (FileStream fs = File.Create(jsonPath))
             {
-                new StreamWriter(fs).Write("{\"fields\":[],\"rows\":[]}");
+                new StreamWriter(fs).Write("{\"Fields\":[],\"Rows\":[]}");
             }
 
             CreateEmptyExcel(excelName);

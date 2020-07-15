@@ -21,7 +21,7 @@ namespace ExcelJson
         {
             while (true)
             {
-                int command = Command("开始使用", "打开表文件", "添加新的映射", "更新所有数据", "强制更新所有数据", "删除闲置映射和缓存", "打开配置文件", "退出");
+                int command = Command("开始使用", "打开表文件", "添加新的映射", "更新所有数据", "强制更新所有数据", "删除闲置映射和缓存", "打开配置文件","打开日志文件", "退出");
                 Config.Instance.LoadConfig();
                 switch (command)
                 {
@@ -44,6 +44,9 @@ namespace ExcelJson
                         OpenConfigFile();
                         break;
                     case 7:
+                        OpenFile(Config.Instance.LogPath);
+                        break;
+                    case 8:
                         Environment.Exit(0);
                         break;
                 }

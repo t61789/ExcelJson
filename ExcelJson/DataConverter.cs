@@ -49,7 +49,7 @@ namespace ExcelProtobuf
             ISheet sheet = workbook.GetSheetAt(0);
 
             JsonBuilder.Clear();
-            JsonBuilder.Append("{\"fields\":[");
+            JsonBuilder.Append("{\"Fields\":[");
 
             int fieldsCount = 0;
             IRow dataNameRow = sheet.GetRow(2);
@@ -61,7 +61,7 @@ namespace ExcelProtobuf
                     JsonBuilder.Append($"\"{cell}\"");
                     fieldsCount++;
                 }
-            JsonBuilder.Append("],\"rows\":[");
+            JsonBuilder.Append("],\"Rows\":[");
 
             var dataType = new DataType[fieldsCount];
             IRow dataTypeRow = sheet.GetRow(1);
@@ -74,7 +74,7 @@ namespace ExcelProtobuf
                 JsonBuilder.Append('[');
                 for (int i = 0; i < fieldsCount; i++)
                 {
-                    JsonBuilder.Append(FormatData(row.GetCell(i).ToString(), dataType[i]));
+                    JsonBuilder.Append(FormatData(row.GetCell(i)?.ToString(), dataType[i]));
                     if(i!=fieldsCount-1)
                         JsonBuilder.Append(',');
                 }
